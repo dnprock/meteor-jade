@@ -15,6 +15,9 @@ template(name="match-jade-tagAttributeWithTextValue-2")
 template(name="match-jade-emptyTagAttribute")
   input(placehover="")
 
+template(name="match-jade-parentContextInTagAttribute")
+  a(href="/users/{{../userId}}/")
+
 template(name="match-jade-helperInTagAttribute")
   input(required=isRequired)
 
@@ -42,19 +45,33 @@ template(name="match-jade-inlineBracketsTags")
 template(name="match-jade-iframe")
   iframe(width="13" height="37")
 
+template(name="match-jade-empty-1")
+
+template(name="match-jade-empty-2")
+  = ""
+
 template(name="match-jade-justText-1")
   | Hello world
 
-//- template(name="match-jade-justText-2")
-//-   = "Hello world"
+template(name="match-jade-justText-2")
+  = "Hello world"
 
-//- template(name="match-jade-justText-3")
-//-   = 'Hello world'
+template(name="match-jade-justText-3")
+  = 'Hello world'
+
+template(name="match-jade-justText-4")
+  = 'Hello '
+  = 'world'
 
 template(name="match-jade-multipleChildren")
   p
     | Hello
     | world
+
+template(name="match-jade-noSpaceBetweenChildren")
+  p
+    | Hello
+    = "."
 
 //- Template helpers
 
@@ -93,18 +110,14 @@ template(name="match-jade-if-1")
     | hello world
 
 template(name="match-jade-if-2")
-  +if weAreTheWorld
-    | hello world
-
-template(name="match-jade-if-3")
   if(weAreTheWorld)
     | hello world
 
-template(name="match-jade-if-4")
+template(name="match-jade-if-3")
   +if(weAreTheWorld)
     | hello world
 
-template(name="match-jade-if-5")
+template(name="match-jade-if-4")
   +if (weAreTheWorld)
     | hello world
 
@@ -146,15 +159,19 @@ template(name="match-jade-contentsInclusion")
   +UI.elseContent
 
 template(name="match-jade-inclusionWithPositionalArgs-1")
-  +myTemplate arg1 arg2
-
-template(name="match-jade-inclusionWithPositionalArgs-2")
   +myTemplate(arg1 arg2)
 
-template(name="match-jade-inclusionWithKeywordArgs-1")
-  +myTemplate key1=arg1 key2=arg2
+template(name="match-jade-inclusionWithPositionalArgs-2")
+  +myTemplate(arg1
+    arg2)
 
-template(name="match-jade-inclusionWithKeywordArgs-2")
+template(name="match-jade-inclusionWithPositionalArgs-3")
+  +myTemplate(
+    arg1
+    arg2
+  )
+
+template(name="match-jade-inclusionWithKeywordArgs-1")
   +myTemplate(key1=arg1 key2=arg2)
 
 
